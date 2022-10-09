@@ -4,7 +4,7 @@
     "height": 400,
     "title": "Yearly number of natural disasters from 2006 to 2021",
     "data": {
-        "url": "../data/Country Totals Yearly.csv"
+        "url": "https://raw.githubusercontent.com/MethmaWijerathna/Homework-Week-10/main/data/Country%20Totals%20Yearly.csv"
     },
     "params": [
         {
