@@ -1,0 +1,77 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 450,
+    "height": 400,
+    "title": "Yearly number of natural disasters from 2006 to 2021",
+    "data": {
+        "url": "../data/Country Totals Yearly.csv"
+    },
+    "params": [
+        {
+            "name": "Continent_selection",
+            "bind": {
+                "input": "select",
+                "options": [
+                    null,
+                    "Africa",
+                    "Americas",
+                    "Asia",
+                    "Europe",
+                    "Oceania"
+                ],
+                "labels": [
+                    "Show All",
+                    "Africa",
+                    "Americas",
+                    "Asia",
+                    "Europe",
+                    "Oceania"
+                ],
+                "name": "Continent Selection: "
+            }
+        }
+    ],
+    "transform": [
+        {
+            "filter": "datum.Year > 2005"
+        },
+        {
+            "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+        }
+    ],
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "nominal",
+            "title": "Year"
+        },
+        "y": {
+            "field": "Disasters",
+            "type": "quantitative",
+            "title": "Number of Disasters",
+            "scale": {"domain": [0, 450]}
+        },
+        "color": {
+            "field": "Continent",
+            "type": "nominal"
+        },
+        "tooltip": [
+            {
+                "field": "Country",
+                "type": "nominal"
+            },
+            {
+                "field": "Disasters",
+                "type": "quantitative",
+                "format": ","
+            },
+            {
+                "field": "Year",
+                "type": "nominal",
+                "format": ""
+            }
+        ]
+    }
+
+}
